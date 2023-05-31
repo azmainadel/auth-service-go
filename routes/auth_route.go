@@ -2,13 +2,17 @@ package routes
 
 import (
 	"authentication/controllers"
+	"authentication/db"
+	"authentication/repositories"
 	"authentication/services"
 
 	"github.com/gin-gonic/gin"
 )
 
 func AuthenticationRoutes(r *gin.Engine) *gin.Engine {
-	authService := services.GetAuthService()
+	postgresDb := db.GetPostgresDb()
+	authRepository := repositories.GetAuthenticationRepository(postgresDb)
+	authService := services.GetAuthService(authRepository)
 	authController := controllers.GetAuthController(authService)
 	authRoutes := r.Group("/auth")
 
