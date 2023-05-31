@@ -10,7 +10,7 @@ import (
 )
 
 type authenticationController struct {
-	authenticationService interfaces.AuthServiceInterface
+	service interfaces.AuthServiceInterface
 }
 
 func (authController *authenticationController) CreateUser(c *gin.Context) {
@@ -24,7 +24,7 @@ func (authController *authenticationController) CreateUser(c *gin.Context) {
 		return
 	}
 
-	authController.authenticationService.CreateUser(createUserInput)
+	authController.service.CreateUser(createUserInput)
 	c.JSON(http.StatusCreated, gin.H{
 		"message": "User created",
 	})
@@ -41,14 +41,14 @@ func (authController *authenticationController) Login(c *gin.Context) {
 		return
 	}
 
-	authController.authenticationService.Login(loginInput)
+	authController.service.Login(loginInput)
 	c.JSON(http.StatusOK, gin.H{
 		"message": "User logged in ",
 	})
 }
 
-func GetAuthController(service interfaces.AuthServiceInterface) interfaces.AuthControllerInterface {
+func GetAuthController(svc interfaces.AuthServiceInterface) interfaces.AuthControllerInterface {
 	return &authenticationController{
-		authenticationService: service,
+		service: svc,
 	}
 }
