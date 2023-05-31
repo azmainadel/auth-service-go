@@ -1,7 +1,9 @@
 package main
 
-import "log"
+import (
+	"authentication/app"
+)
 
 func main() {
-	log.Println("Hello, World!")
+	app.StartApp()
 }
