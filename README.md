@@ -18,3 +18,6 @@ Simple auth service for learning purposes written in Go.
 
 ## Packages Used
 * Gin 
+* GORM
+* UUID
+* Bcrypt
