@@ -12,7 +12,7 @@ type User struct {
 	Password string    `json:"password"`
 }
 
-func (user *User) PreProcess(tx *gorm.DB) (err *error) {
+func (user *User) BeforeCreate(tx *gorm.DB) (err error) {
 	user.Id = uuid.New()
 	return
 }
