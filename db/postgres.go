@@ -1,6 +1,8 @@
 package db
 
 import (
+	"authentication/models"
+
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -13,5 +15,6 @@ func GetPostgresDb() *gorm.DB {
 		panic("DB connection failed!")
 	}
 
+	db.AutoMigrate(&models.User{})
 	return db
 }
