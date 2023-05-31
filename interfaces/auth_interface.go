@@ -14,7 +14,7 @@ type AuthControllerInterface interface {
 
 type AuthServiceInterface interface {
 	Login(input dto.LoginInput)
-	CreateUser(input dto.CreateUserInput)
+	CreateUser(input dto.CreateUserInput) *models.User
 }
 
 type AuthRepositoryInterface interface {

@@ -24,10 +24,8 @@ func (authController *authenticationController) CreateUser(c *gin.Context) {
 		return
 	}
 
-	authController.service.CreateUser(createUserInput)
-	c.JSON(http.StatusCreated, gin.H{
-		"message": "User created",
-	})
+	user := authController.service.CreateUser(createUserInput)
+	c.JSON(http.StatusCreated, user)
 }
 
 func (authController *authenticationController) Login(c *gin.Context) {
